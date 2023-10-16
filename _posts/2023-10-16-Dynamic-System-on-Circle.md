@@ -1,3 +1,5 @@
+
+---
 layout: post
 title: Dynamic System on Circle
 date: 2023-10-16 00:00:00-0400
@@ -6,6 +8,7 @@ tags: rotation number
 categories: dynamic system
 related_posts: false
 
+---
 # Dynamic System on Circle
 
 
@@ -32,7 +35,7 @@ Claim: If $\lim\limits_{m\rightarrow \infin}\frac{a_{mk}}{mk}=a$ for fixed $k$ a
 
 By the claim, we can reinterpret the reuslt into $\rho(f)=\lim\limits_{m\rightarrow \infin}\frac{F^{mn_0}(x_0)}{mn_0}(mod1)=\frac{k_0}{n_0}(mod1)$.
 
-(2)$f$ doesn’t admit a periodic point. In the sense of lifting, this means $\forall m\in \N,\exists P_m\in \Z$  s.t. $P_m<F^m(x)-x<P_m+1$. By taking $x$ as$F^m(x)-x$, $P_m<F^{nm}(x)-F^{(n-1)m}x<P_m+1$. By sumation, $nP_m<F^{nm}(0)-0<(P_m+1)n$ i.e. $\frac{P_m}{m}<\frac{F^{nm}(0)}{mn}<\frac{P_m+1}{m}$. Notice from beginning $\frac{P_m}{m}<\frac{F^{m}(0)}{m}<\frac{P_m+1}{m}$ thus $\lvert\frac{F^{nm}(0)}{mn}-\frac{F^{m}(0)}{m}\rvert<\frac{1}{m}$. By symmetry,  $|\frac{F^{nm}(0)}{mn}-\frac{F^{n}(0)}{n}|<\frac{1}{n}$ then $|\frac{F^{m}(0)}{m}-\frac{F^{n}(0)}{n}|<\frac{1}{n}+\frac{1}{m}$ i.e. $\frac{F^n(0)}{n}$ is Cauchy hence verify the existence of limit.
+(2)$f$ doesn’t admit a periodic point. In the sense of lifting, this means $\forall m\in \N,\exists P_m\in \Z$  s.t. $P_m<F^m(x)-x<P_m+1$. By taking $x$ as$F^m(x)-x$, $P_m<F^{nm}(x)-F^{(n-1)m}x<P_m+1$. By sumation, $nP_m<F^{nm}(0)-0<(P_m+1)n$ i.e. $\frac{P_m}{m}<\frac{F^{nm}(0)}{mn}<\frac{P_m+1}{m}$. Notice from beginning $\frac{P_m}{m}<\frac{F^{m}(0)}{m}<\frac{P_m+1}{m}$ thus $\lvert\frac{F^{nm}(0)}{mn}-\frac{F^{m}(0)}{m}\rvert<\frac{1}{m}$. By symmetry,  $\lvert\frac{F^{nm}(0)}{mn}-\frac{F^{n}(0)}{n}\lvert<\frac{1}{n}$ then $\lvert\frac{F^{m}(0)}{m}-\frac{F^{n}(0)}{n}\lvert<\frac{1}{n}+\frac{1}{m}$ i.e. $\frac{F^n(0)}{n}$ is Cauchy hence verify the existence of limit.
 
 Remark: the rotation number of second case cannot be rational since later we will see rational rotation number implies the existence of periodic point.
 
@@ -62,7 +65,7 @@ Remark: those fixed points are attractors of the system
 
 To conclude what we achieve at this moment:
 
-If the rotation number $\rho(f)=\frac{p}{q}\in \mathbb{Q}$ and a point $x\in S^1$, either (1) $x$ is $q$-periodic, or (2) there is a $q$-periodic point $x_0$ s.t. $|f^n(x)-f^n(x_0)|\rightarrow 0,n\rightarrow \infin$.
+If the rotation number $\rho(f)=\frac{p}{q}\in \mathbb{Q}$ and a point $x\in S^1$, either (1) $x$ is $q$-periodic, or (2) there is a $q$-periodic point $x_0$ s.t. $\lvertf^n(x)-f^n(x_0)\lvert\rightarrow 0,n\rightarrow \infin$.
 
 On the other hand, if the rotation number $\rho(f)=\alpha$ irrational, then there is a semi-conjugacy $h:S^1\rightarrow S^1$ between $f$ and $R_\alpha$.
 
@@ -104,7 +107,7 @@ For $x\notin ex(x_0)$, $\hat H (F(x))=\sup\limits_{y\in eo(x_0),y<F(x)}H(y)=\sup
 
 Now set $h(x):=H(x)mod1,\forall x\in S^1= \R/\Z$
 
-Proposition: Assume there is $J\sub \R$ non-trivial interval where $\hat H(J)=\{c\}$ i.e. $H|_J=c$ constant. Then $H$ is locally constant on an open and dense subset of $\R$. (devil staircase)
+Proposition: Assume there is $J\sub \R$ non-trivial interval where $\hat H(J)=\{c\}$ i.e. $H\lvert_J=c$ constant. Then $H$ is locally constant on an open and dense subset of $\R$. (devil staircase)
 
 Proof: Consider the set $U=\bigcup\limits_{\text{open } J\sub \R,H\text{constant on }J}J$ which is non-empty by assupmtion. Choose a such $J$ with $H$ constant on it. Observe that $F^i(J)+j$ is contained in $U$ by construction. Suppose $U$ is not dense in $\R$, then there exists an open interval $I\sub\R\backslash U$. We show that $H$ has also to be constant on $I$ hence $I\sub U$ contradicted! Indeed, if $H(I)$ non-constant, then there is two point say  $i_1\alpha+j_1<i_2\alpha+j_2$ is contained in the image of $I$ under $H$. In other word, there is $F^{i_1}(x_0)+j_1<F^{i_2}(x_0)+j_2$ . Recall that given $x,z\in S^1$ and $m>n\in\N$. Then there is $k\in\N^*$s.t. $f^k(z)\in [f^n(x),f^m(x)]$ when $\rho (f)$ irrational. Therefore, for an arbitrary point in $J$, say $y$ there will be integers $k$ and $l$ s.t. $F^k(J)+l\in (F^{i_1}(x_0)+j_1,F^{i_2}(x_0)+j_2)$. However, $J$ cannot intersect with $I$, so is $F^k(J)+l$, contradicted! In nutshell, we prove that $H$ is locally constant on an open and dense subset of $\R$.
 
@@ -118,15 +121,15 @@ Theorem: Given $\alpha\in \R\backslash \mathbb{Q}$, there exists a $C^1$-orienta
 
 Remark: The idea is we consider the orbit of a point which scattered along the circle. And replace each point with an elaborately chosen interval with proper length. We design the orbit of a particular point to be non-dense. Then $f$ non-transitive for $\rho(f)\in \R\backslash \mathbb{Q}$.
 
-Proof of the theorem: Choose positive number $l_m:=\frac{c}{(|m|+2)(|m|+3)}$ where $c>0$ such that $\sum\limits_{m\in\Z}l_m=1$ and interval $I_m:=[a_m,b_m]$ where $a_m:=\sum\limits_{k\in J_m}l_k, J_m:=\{k\in \Z:R^k_\alpha(x_0)\in [x_0,R^m_\alpha(x_0))\}$ and $b_m=a_m+l_m$ .
+Proof of the theorem: Choose positive number $l_m:=\frac{c}{(\lvertm\lvert+2)(\lvertm\lvert+3)}$ where $c>0$ such that $\sum\limits_{m\in\Z}l_m=1$ and interval $I_m:=[a_m,b_m]$ where $a_m:=\sum\limits_{k\in J_m}l_k, J_m:=\{k\in \Z:R^k_\alpha(x_0)\in [x_0,R^m_\alpha(x_0))\}$ and $b_m=a_m+l_m$ .
 
 Observation: When $m=0$, $J_m$ empty hence $a_0=0$. Otherwise, $J_m$ nonempty and a subset of integer hence $a_m\in (0,1)$. Moreover, $b_m=\sum\limits_{k\in J_m\cup \{m\}}l_k$ hence $b_m\in (0,1)$ as well.
 
 $\forall x\in I_m=[a_m,b_m],g(x):=1+6\frac{l_{m+1}-l_{m}}{l_m^3}(b_n-x)(x-a_m)$.
 
-Observation: $I_n$ are pairwise disjoint. For $I_m$ and $I_n$, either $J_m\subsetneq J_n$ or $J_m\supsetneq J_n$ since $\alpha$  irrational. We may assume $J_m\subsetneq J_n$, then $b_m=\sum\limits_{k\in J_m\cup \{m\}}l_k\leq \sum\limits_{k\in J_n}l_k=a_n$. Notice $\sum\limits_{m\in\Z}|I_m|=\sum\limits_{m\in\Z}l_m=1$ indicating $\bigcup\limits_{m\in \Z}I_m$ is dense.
+Observation: $I_n$ are pairwise disjoint. For $I_m$ and $I_n$, either $J_m\subsetneq J_n$ or $J_m\supsetneq J_n$ since $\alpha$  irrational. We may assume $J_m\subsetneq J_n$, then $b_m=\sum\limits_{k\in J_m\cup \{m\}}l_k\leq \sum\limits_{k\in J_n}l_k=a_n$. Notice $\sum\limits_{m\in\Z}\lvertI_m\lvert=\sum\limits_{m\in\Z}l_m=1$ indicating $\bigcup\limits_{m\in \Z}I_m$ is dense.
 
-Observation: $g:S^1\rightarrow \R^+$ is continuous satisfying $\int_{a_m}^{b_m}g(t)dt=l_{m+1}>0$. Firstly $g(a_m)=g(b_m)=1$, it suffices to show that $g|*{I_m}\equiv 1 ,m\rightarrow \infin$. For $m\geq 0 ,l*{m+1}<l_{m}$, we have $1\geq g|*{I_m}（x）\geq1-6\frac{l*{m}-l_{m+1}}{l_m^3}(l_m/2)^2\rightarrow 1$. For $m< 0 ,l_{m+1}>l_{m}$, we have $1\leq g|*{I_m}（x）\leq1+6\frac{l*{m+1}-l_{m}}{l_m^3}(l_m/2)^2\rightarrow 1$. Therefore $g$ continuous.
+Observation: $g:S^1\rightarrow \R^+$ is continuous satisfying $\int_{a_m}^{b_m}g(t)dt=l_{m+1}>0$. Firstly $g(a_m)=g(b_m)=1$, it suffices to show that $g\lvert*{I_m}\equiv 1 ,m\rightarrow \infin$. For $m\geq 0 ,l*{m+1}<l_{m}$, we have $1\geq g\lvert*{I_m}（x）\geq1-6\frac{l*{m}-l_{m+1}}{l_m^3}(l_m/2)^2\rightarrow 1$. For $m< 0 ,l_{m+1}>l_{m}$, we have $1\leq g\lvert*{I_m}（x）\leq1+6\frac{l*{m+1}-l_{m}}{l_m^3}(l_m/2)^2\rightarrow 1$. Therefore $g$ continuous.
 
 We are now ready to construct $f:S^1\rightarrow S^1$ by $f(x)=a_1+\int_0^xg(t)dt$.
 
