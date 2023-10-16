@@ -60,12 +60,12 @@ Simultaneous Diophantine Approximation:
 
 For $\alpha_1,...,\alpha_n\in\R$, there exsists infinitely many tuples of integer $p_1,...,p_n,p$ with $p\geq1$ such that $\|\frac{p_i}{p}-\alpha_i\|\leq\frac{1}{p^{1+1/n}}$
 
-Consider $S_\varepsilon=\{x\in \R^{n+1}:|x_i-\alpha_ix_{n+1}|\leq\varepsilon,i=1,...,n,|x_{n+1}|\leq\varepsilon^{-n}\}$ which is of good shape.
+Consider $S_\varepsilon=\{x\in \R^{n+1}:\|x_i-\alpha_ix_{n+1}\|\leq\varepsilon,i=1,...,n,\|x_{n+1}\|\leq\varepsilon^{-n}\}$ which is of good shape.
 
-Take $u_i=\frac{1}{s}(x_i-\alpha_iy),v=s^ny$ and denote the transformation as $\phi$. Then $\phi(S)$ is defined by $|u_i|\leq1,|v|\leq1$. So $m(S)=m(\phi(S))/det(\phi)=2^n/1=2^n$.
+Take $u_i=\frac{1}{s}(x_i-\alpha_iy),v=s^ny$ and denote the transformation as $\phi$. Then $\phi(S)$ is defined by $\|u_i\|\leq1,\|v\|\leq1$. So $m(S)=m(\phi(S))/det(\phi)=2^n/1=2^n$.
 
 Hence by Minkowski’s Fundamental Theorem, the region $S$ contains a lattice point $(p_1,...,p_n,p)$ other than the origin. 
 
-Observe that $p\neq0$, we may assume that $p>0$. Notice $|\frac{p_i}{p}-\alpha_i|\leq\frac{s}{p}$ and combine with the construction of $S_\varepsilon$ i.e. $\varepsilon \leq p^{-1/n}$, we have $p_1,...,p_n,p$ indeed a desired Diophantine approximation. 
+Observe that $p\neq0$, we may assume that $p>0$. Notice $\|\frac{p_i}{p}-\alpha_i\|\leq\frac{s}{p}$ and combine with the construction of $S_\varepsilon$ i.e. $\varepsilon \leq p^{-1/n}$, we have $p_1,...,p_n,p$ indeed a desired Diophantine approximation. 
 
-To show the infinity, keep choosing $\varepsilon$  so small that $|p_i-\alpha_ip|>\varepsilon$ for all exsisting solutions. Then the new $\varepsilon$ yields another solution.
+To show the infinity, keep choosing $\varepsilon$  so small that $\|p_i-\alpha_ip\|>\varepsilon$ for all exsisting solutions. Then the new $\varepsilon$ yields another solution.
