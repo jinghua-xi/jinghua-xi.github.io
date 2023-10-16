@@ -1,14 +1,20 @@
+layout: post
+title: Dynamic System on Circle
+date: 2023-10-16 00:00:00-0400
+description: we study dynamic system on circle with rotation number 
+tags: rotation number 
+categories: dynamic system
+related_posts: false
+
 # Dynamic System on Circle
 
-[Blackboard image](https://www.notion.so/Blackboard-image-1fdf16d6c9714304ac212a847479a243?pvs=21)
+
 
 ## Motivation and naive example
 
 To see the dynamical properties of a transformation, we hope the effect of transformation will accumulate hence we will mainly focus on the orientaion-preserving homeomorphism from $S^1$ to itself.
 
 A naive class of such transformation is rotation $R_\alpha$. And they can get divided into two classes up to their dynamical behavior, namely $\alpha$  rational or irrational. For an arbitrary point on $S^1$, its orbit under $R_\alpha$ is either periodic or dense in $S^1$ respectively.
-
-[the orbit of irrational rotation is dense ](https://www.notion.so/the-orbit-of-irrational-rotation-is-dense-943a3fe6e2714467bce86e4638dba290?pvs=21)
 
 ## Classification of oientation-preseving homeomorphisms on $S^1$
 
@@ -26,7 +32,7 @@ Claim: If $\lim\limits_{m\rightarrow \infin}\frac{a_{mk}}{mk}=a$ for fixed $k$ a
 
 By the claim, we can reinterpret the reuslt into $\rho(f)=\lim\limits_{m\rightarrow \infin}\frac{F^{mn_0}(x_0)}{mn_0}(mod1)=\frac{k_0}{n_0}(mod1)$.
 
-(2)$f$ doesn’t admit a periodic point. In the sense of lifting, this means $\forall m\in \N,\exists P_m\in \Z$  s.t. $P_m<F^m(x)-x<P_m+1$. By taking $x$ as$F^m(x)-x$, $P_m<F^{nm}(x)-F^{(n-1)m}x<P_m+1$. By sumation, $nP_m<F^{nm}(0)-0<(P_m+1)n$ i.e. $\frac{P_m}{m}<\frac{F^{nm}(0)}{mn}<\frac{P_m+1}{m}$. Notice from beginning $\frac{P_m}{m}<\frac{F^{m}(0)}{m}<\frac{P_m+1}{m}$ thus $|\frac{F^{nm}(0)}{mn}-\frac{F^{m}(0)}{m}|<\frac{1}{m}$. By symmetry,  $|\frac{F^{nm}(0)}{mn}-\frac{F^{n}(0)}{n}|<\frac{1}{n}$ then $|\frac{F^{m}(0)}{m}-\frac{F^{n}(0)}{n}|<\frac{1}{n}+\frac{1}{m}$ i.e. $\frac{F^n(0)}{n}$ is Cauchy hence verify the existence of limit.
+(2)$f$ doesn’t admit a periodic point. In the sense of lifting, this means $\forall m\in \N,\exists P_m\in \Z$  s.t. $P_m<F^m(x)-x<P_m+1$. By taking $x$ as$F^m(x)-x$, $P_m<F^{nm}(x)-F^{(n-1)m}x<P_m+1$. By sumation, $nP_m<F^{nm}(0)-0<(P_m+1)n$ i.e. $\frac{P_m}{m}<\frac{F^{nm}(0)}{mn}<\frac{P_m+1}{m}$. Notice from beginning $\frac{P_m}{m}<\frac{F^{m}(0)}{m}<\frac{P_m+1}{m}$ thus $\lvert\frac{F^{nm}(0)}{mn}-\frac{F^{m}(0)}{m}\rvert<\frac{1}{m}$. By symmetry,  $|\frac{F^{nm}(0)}{mn}-\frac{F^{n}(0)}{n}|<\frac{1}{n}$ then $|\frac{F^{m}(0)}{m}-\frac{F^{n}(0)}{n}|<\frac{1}{n}+\frac{1}{m}$ i.e. $\frac{F^n(0)}{n}$ is Cauchy hence verify the existence of limit.
 
 Remark: the rotation number of second case cannot be rational since later we will see rational rotation number implies the existence of periodic point.
 
