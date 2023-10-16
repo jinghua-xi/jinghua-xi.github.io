@@ -5,7 +5,6 @@ date: 2023-08-23 00:00:00-0400
 description: introduction of Minkowski Theorem
 tags: number-theory
 categories: number-theory
-giscus_comments: true
 related_posts: false
 ---
 
