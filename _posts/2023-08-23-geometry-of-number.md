@@ -58,7 +58,7 @@ Partition $C$ as $C_1,...,C_k$ and translate them inside another square $R$ with
 
 Simultaneous Diophantine Approximation:
 
-For $\alpha_1,...,\alpha_n\in\R$, there exsists infinitely many tuples of integer $p_1,...,p_n,p$ with $p\geq1$ such that $|\frac{p_i}{p}-\alpha_i|\leq\frac{1}{p^{1+1/n}}$
+For $\alpha_1,...,\alpha_n\in\R$, there exsists infinitely many tuples of integer $p_1,...,p_n,p$ with $p\geq1$ such that $\|\frac{p_i}{p}-\alpha_i\|\leq\frac{1}{p^{1+1/n}}$
 
 Consider $S_\varepsilon=\{x\in \R^{n+1}:|x_i-\alpha_ix_{n+1}|\leq\varepsilon,i=1,...,n,|x_{n+1}|\leq\varepsilon^{-n}\}$ which is of good shape.
 
