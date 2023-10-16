@@ -3,7 +3,7 @@ layout: post
 title: The geometry of number
 date: 2023-08-23 00:00:00-0400
 description: introduction of Minkowski Theorem
-tags: number-theory
+tags: lattice
 categories: number-theory
 related_posts: false
 ---
