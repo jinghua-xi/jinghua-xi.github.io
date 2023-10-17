@@ -18,7 +18,7 @@ A naive class of such transformation is rotation $$R_\alpha$$. And they can get 
 
 Indeed, these two classes of rotation represent the two major classes of orientaion-preserving homeomorphism on $$S^1$$. We can use the quantity rotation number to classify the transformation. In order to have deeper insight into the orientaion-pereserving homeomorphism, we shall view them from the perspectives of lifting.
 
-We say $$F:\mathbb{R}\rightarrow \mathbb{R}$$ is a lifting of $$f$$ if $$\pi F = f \pi$$ where $$\pi: \mathbb{R} \rightarrow S^1$$ is the covering map. It’s immediate that $$F(x+1)=F(x)+1$$ (moreover if $$G:=F+k$$ then $$G^n=F^n+nk$$) and $$F_1(x)\equiv F_2(x) (mod 1)$$. The first observation indicates that we should regard a orientaion-preserving homeomorphism $$f$$ on $$S^1$$ as an unique periodic function $$F(x)-x$$ up to adding a constant integer. Observe that $$F^k(x+1)-(x+1)=F(F^{k-1}(x)+1)-(x+1)=F^k(x)-x$$ which is again perodic.
+We say $$F:\mathbb{R}\rightarrow \mathbb{R}$$ is a lifting of $$f$$ if $$\pi F = f \pi$$ where $$\pi: \mathbb{R} \rightarrow S^1$$ is the covering map.  that $$F(x+1)=F(It’s immediatex)+1$$ (moreover if $$G:=F+k$$ then $$G^n=F^n+nk$$) and $$F_1(x)\equiv F_2(x) (mod 1)$$. The first observation indicates that we should regard a orientaion-preserving homeomorphism $$f$$ on $$S^1$$ as an unique periodic function $$F(x)-x$$ up to adding a constant integer. Observe that $$F^k(x+1)-(x+1)=F(F^{k-1}(x)+1)-(x+1)=F^k(x)-x$$ which is again perodic.
 
 We can now define the rotation number of $$F$$ by $$\rho(F)=\lim\limits_{n\rightarrow \infty}\frac{F^n(x)}{n}=\lim\limits_{n\rightarrow \infty}\frac{F^n(x)-x}{n}=\lim\limits_{n\rightarrow \infty}\frac{F^n(x+m)-(x+m)}{n}=\lim\limits_{n\rightarrow \infty}\frac{F^n(y)-y}{n}=\lim\limits_{n\rightarrow \infty}\frac{F^n(y)}{n}$$ for any $$x,y$$ where $$y$$ must get squeezed in some interval $$[x+m,x+m+1]$$ as $$F$$ monotonically increase, which means the limitation doesn’t depend on the choice of $$x$$. By the above argument, $$\rho(f):=\rho(F)(mod1)$$ is well-defined.
 
@@ -52,7 +52,7 @@ We prompt the proposition using the following lemma:
 
 Lemma: For $$G$$ a lift of $$g$$ with $$\rho(G)=0$$ and a point $$x\in S^1$$ with $$G(x_0)-x_0>0$$. Then there will be a point $$x'>x_0$$ such that $$G(x')-x'=0$$.
 
-Proof: Suppose $$G(x)-x>0\$$ for all $$x>x_0$$. Since it’s continuous and periodic hence we can choose $$\delta=\inf\limits_{x\in\mathbb{R}}G(x)-x>0$$. Then $$G(x)-x\geq\delta,\forall x\in \mathbb{R}$$. By cliché trick we accumulate the error $$G^k(x)-x\geq k\delta$$. But this we deviate the rotation number $$\rho(g)=\lim\limits_{k\rightarrow \infty}\frac{G^k(x)-x}{k}(mod1)=\delta(mod1)>0$$ contradicated.
+Proof: Suppose $$G(x)-x>0,\forall x>x_0$$. Since it’s continuous and periodic hence we can choose $$\delta=\inf\limits_{x\in\mathbb{R}}G(x)-x>0$$. Then $$G(x)-x\geq\delta,\forall x\in \mathbb{R}$$. By cliché trick we accumulate the error $$G^k(x)-x\geq k\delta$$. But this we deviate the rotation number $$\rho(g)=\lim\limits_{k\rightarrow \infty}\frac{G^k(x)-x}{k}(mod1)=\delta(mod1)>0$$ contradicated.
 
 Then the proposition follows by Lemma.
 
@@ -122,9 +122,9 @@ Observation: When $$m=0$$, $$J_m$$ empty hence $$a_0=0$$. Otherwise, $$J_m$$ non
 
 $$\forall x\in I_m=[a_m,b_m],g(x):=1+6\frac{l_{m+1}-l_{m}}{l_m^3}(b_n-x)(x-a_m)$$.
 
-Observation: $$I_n$$ are pairwise disjoint. For $$I_m$$ and $$I_n$$, either $$J_m\subsetsetneq J_n$$ or $$J_m\supsetneq J_n$$ since $$\alpha$$  irrational. We may assume $$J_m\subsetsetneq J_n$$, then $$b_m=\sum\limits_{k\in J_m\cup \{m\}}l_k\leq \sum\limits_{k\in J_n}l_k=a_n$$. Notice $$\sum\limits_{m\in\mathbb{Z}}\lvert I_m \rvert=\sum\limits_{m\in\mathbb{Z}}l_m=1$$ indicating $$\bigcup\limits_{m\in \mathbb{Z}}I_m$$ is dense.
+Observation: $$I_n$$ are pairwise disjoint. For $$I_m$$ and $$I_n$$, either $$J_m\subsetneq J_n$$ or $$J_m\supsetneq J_n$$ since $$\alpha$$  irrational. We may assume $$J_m\subsetneq J_n$$, then $$b_m=\sum\limits_{k\in J_m\cup \{m\}}l_k\leq \sum\limits_{k\in J_n}l_k=a_n$$. Notice $$\sum\limits_{m\in\mathbb{Z}}\lvert I_m \rvert=\sum\limits_{m\in\mathbb{Z}}l_m=1$$ indicating $$\bigcup\limits_{m\in \mathbb{Z}}I_m$$ is dense.
 
-Observation: $$g:S^1\rightarrow \mathbb{R}^+$$ is continuous satisfying $$\int_{a_m}^{b_m}g(t)dt=l_{m+1}>0$$. Firstly $$g(a_m)=g(b_m)=1$$, it suffices to show that $$g|*{I_m}\equiv 1 ,m\rightarrow \infty$$. For $$m\geq 0 ,l*{m+1}<l_{m}$$, we have $$1\geq g|*{I_m}（x）\geq1-6\frac{l*{m}-l_{m+1}}{l_m^3}(l_m/2)^2\rightarrow 1$$. For $$m< 0 ,l_{m+1}>l_{m}$$, we have $$1\leq g|*{I_m}（x）\leq1+6\frac{l*{m+1}-l_{m}}{l_m^3}(l_m/2)^2\rightarrow 1$$. Therefore $$g$$ continuous.
+Observation: $$g:S^1\rightarrow \mathbb{R}^+$$ is continuous satisfying $$\int_{a_m}^{b_m}g(t)dt=l_{m+1}>0$$. Firstly $$g(a_m)=g(b_m)=1$$, it suffices to show that $$g\vert*{I_m}\equiv 1 ,m\rightarrow \infty$$. For $$m\geq 0 ,l*{m+1}<l_{m}$$, we have $$1\geq g\vert*{I_m}（x）\geq1-6\frac{l*{m}-l_{m+1}}{l_m^3}(l_m/2)^2\rightarrow 1$$. For $$m< 0 ,l_{m+1}>l_{m}$$, we have $$1\leq g\vert*{I_m}（x）\leq1+6\frac{l*{m+1}-l_{m}}{l_m^3}(l_m/2)^2\rightarrow 1$$. Therefore $$g$$ continuous.
 
 We are now ready to construct $$f:S^1\rightarrow S^1$$ by $$f(x)=a_1+\int_0^xg(t)dt$$.
 
@@ -138,7 +138,7 @@ Remark: $$g$$ continuous, positive and normal( $$\int_0^1g(t)dt=1$$) implies $$f
 
 When the rotation number turns irrational, roughly speaking, there seem to be only one orbit.
 
-Definition: (1)The $$\omega$$-limit set for $$(X,f)$$ of $$x$$ is defined by $$\omega(x):=\{y\in X: \exist n_i\rightarrow +\infty s.t.f^{n_i}\rightarrow y ,i\rightarrow +\infty\}$$ (2)The $$\alpha$$-limit set for $$(X,f)$$ of $$x$$ is defined by $$\alpha(x):=\{y\in X: \exist n_i\rightarrow -\infty s.t.f^{n_i}\rightarrow y ,i\rightarrow +\infty\}$$
+Definition: (1)The $$\omega$$-limit set for $$(X,f)$$ of $$x$$ is defined by $$\omega(x):=\{y\in X: \exists n_i\rightarrow +\infty s.t.f^{n_i}\rightarrow y ,i\rightarrow +\infty\}$$ (2)The $$\alpha$$-limit set for $$(X,f)$$ of $$x$$ is defined by $$\alpha(x):=\{y\in X: \exists n_i\rightarrow -\infty s.t.f^{n_i}\rightarrow y ,i\rightarrow +\infty\}$$
 
 Proposition: If $$\rho(f)$$ irrational, then $$\omega(x)=\omega(y),\forall x,y\in S^1$$.
 
