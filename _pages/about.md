@@ -27,7 +27,7 @@ I am a member of Fields Honor Class which is a elite programe for mathematic und
 
 I also organize mathematic salon for undergraduate. I am contriving to connect people with the beauty of math.
 
-As I third year student, I hold a bunch of seminar with involved topics. I am really fond of participate in a seminar.
+As I third year student, I hold a bunch of seminars with involved topics. I am really fond of participate in a seminar.
 
-I also wrote a few notes which I will post on this webpage.
+I also wrote a few notes which I will post them on this webpage.
 
