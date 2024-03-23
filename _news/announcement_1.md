@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I am enduring an exchanging program in Peiking University for a semester.
+I am undergoing an exchanging program in Peiking University for a semester.
