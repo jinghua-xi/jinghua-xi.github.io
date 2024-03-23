@@ -8,4 +8,4 @@ category: work
 related_publications: einstein1956investigations, einstein1950meaning
 ---
 
-<iframe src="{{ '/assets/pdf/CV_of_Jinghua_Xi.pdf' | relatvie_url }}"></iframe>
+<embed src="{{ '/assets/pdf/CV_of_Jinghua_Xi.pdf' | relatvie_url }}" width="100%" height="1930px"></embed>
