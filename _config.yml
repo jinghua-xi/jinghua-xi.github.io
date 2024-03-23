@@ -197,6 +197,7 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
+  math-engine: katex
   syntax_highlighter_opts:
     css_class: 'highlight'
     span:
@@ -233,6 +234,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-toc
   - jekyll-twitter-plugin
+  - kramdown-math-katex
   - jemoji
 
 # Sitemap settings
