@@ -5,14 +5,14 @@
     "image": "",
     "email": "12110713@mail.sustech.edu.cn",
     "phone": "(+86) 181-0666-6827",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "url": "https://jinghua-xi.github.io/",
+    "summary": "A Chinese-born undergraduate in pure mathematics whose reaserch interest is in dynamic system. ",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "1088 Xueyuan Avenue",
+      "postalCode": "CN 518055",
+      "city": "Shenzhen",
+      "countryCode": "China",
+      "region": "Guangdong Province"
     },
     "profiles": [
       {
@@ -22,19 +22,8 @@
       }
     ]
   },
-  "work": [
-    {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": [
-        "Relativity"
-      ]
-    }
-  ],
+
+
   "volunteer": [],
   "education": [
     {
@@ -44,23 +33,20 @@
       "studyType": "undergraduate",
       "startDate": "2021-09-01",
       "endDate": "2024-06-30",
-      "score": "",
-      "courses": [
-        "Theory of Relativity"
+      "interest": [
+        "Dynamic system"
       ]
     }
   ],
-  "awards": [
-    {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
-    }
-  ],
+
   "certificates": [],
   "publications": [],
-  "skills": [],
+  "skills": [
+    {
+      "Programming":"Java,Python"
+    }
+  ],
+  
   "languages": [
     {
       "language": "Chinese",
@@ -68,7 +54,15 @@
     },
     {
       "language": "English",
-      "fluency": "Fluent"
+      "fluency": "Good user(ielts band 7.0)"
+    },
+    {
+      "language": "French",
+      "fluency": "Beginner"
+    },
+    {
+      "language":"Spanish",
+      "fluency": "Beginner"
     }
   ],
   "interests": [],
