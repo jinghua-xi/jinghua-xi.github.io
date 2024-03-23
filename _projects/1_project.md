@@ -5,6 +5,6 @@ description: a project with a background image
 img: assets/img/elliptic curve.png
 importance: 1
 category: work
-related_publications: einstein1956investigations, einstein1950meaning
+related_publications: Forster1981, SteinShakarchi2003
 embed_pdf: from_complex_analysis_to_the_group_structure_on_elliptic_curve.pdf
 ---
