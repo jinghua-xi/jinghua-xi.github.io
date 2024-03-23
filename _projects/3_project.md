@@ -2,7 +2,7 @@
 layout: page
 title: An introduction to algebraic geometry
 description: a very basic introduction.
-img: assets/img/2.png
+img: 
 importance: 1
 category: work
 related_publications: 
