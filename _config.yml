@@ -234,6 +234,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-toc
   - jekyll-twitter-plugin
+  - kramdown-math-katex
   - jemoji
 
 # Sitemap settings
