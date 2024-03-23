@@ -1,7 +1,7 @@
 ---
 layout: page
-title: project 1
-description: a project with a background image
+title: Group Structure of Elliptic Curve
+description: From basic complex analysis to group structure of elliptic curve
 img: assets/img/elliptic curve.png
 importance: 1
 category: work
