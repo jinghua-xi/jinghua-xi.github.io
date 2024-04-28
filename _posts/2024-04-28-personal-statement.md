@@ -8,6 +8,7 @@ categories: sample-posts external-services
 disqus_comments: true
 related_posts: false
 ---
+
 Hi there,
 
 I am Jinghua Xi, a member of the **Fields Honors Class** in the Mathematics Department at Southern University of Science and Technology, class of 2021. A passion for mathematics runs through my family, with both my grandfather and father being university mathematics professors. Therefore, following in their footsteps and becoming a distinguished mathematician has been my ambition since childhood. I harbor a dream: one day, I will discover a theorem that is destined for me—profound in essence and perfect in form, it will earn widespread recognition and acclaim from both the academic community and the public.
