@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>The Classification of 1-dim Borel Ring. | Jinghua Xi</title><meta name="description" content="The Classification of 1-dim Borel Ring. — Jinghua Xi, 12 Nov 2024. Preserved from the SUSTech Undergraduate Mathematics Salon."><meta property="og:title" content="The Classification of 1-dim Borel Ring. | Jinghua Xi"><meta property="og:description" content="The Classification of 1-dim Borel Ring. — Jinghua Xi, 12 Nov 2024. Preserved from the SUSTech Undergraduate Mathematics Salon."><meta property="og:type" content="website"><link rel="canonical" href="https://jinghua-xi.github.io/salon/talks/166eb8e5730280dc9bbcdb7c1f0cfd3c.html"><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><script src="../../assets/js/theme.js"></script><link rel="stylesheet" href="../../assets/css/minimal-light.css"><link rel="stylesheet" href="../../assets/css/site.css"><script src="../../assets/js/math-config.js"></script><script defer src="../../assets/vendor/mathjax-tex-svg.js"></script></head><body><a class="skip-link" href="#main">Skip to content</a><div class="wrapper"><header class="profile"><div class="monogram" aria-hidden="true">JX</div><h1><a href="../../index.html">Jinghua Xi</a></h1><p class="position">M.Sc. student in Mathematics<br>University of Bonn</p><p class="location">Bonn, Germany</p><a class="email" href="mailto:s79jxi@uni-bonn.de">s79jxi@uni-bonn.de</a><div class="profile-links"><a href="../../cv/">CV</a><a href="https://github.com/jinghua-xi">GitHub ↗</a></div><nav class="side-nav" aria-label="Main navigation"><a class="" href="../../index.html">About</a><a href="../../index.html#research">Research</a><a href="../../index.html#education">Education</a><a class="active" href="../../salon/">Salon archive</a><a class="" href="../../cv/">Curriculum vitae</a></nav><button class="theme-toggle" type="button" aria-label="Switch color theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16Z" fill="currentColor"/></svg><span>Color theme</span></button></header><main id="main"><a class="back" href="../">← All salon talks</a><header class="talk-heading"><div class="eyebrow">2024 Fall · Salon archive</div><h1>The Classification of 1-dim Borel Ring.</h1><p class="talk-byline">Jinghua Xi · <time datetime="2024-11-12">12 Nov 2024</time></p></header><p class="record-note">Historical lecture notes, preserved from the original page. Mathematical statements and proofs have not been revised.</p><p class="record-note">The directory lists 12 November 2024; the notes themselves are dated 17 November 2024. Both dates are preserved.</p><article class="talk-content"><h2>Abstract</h2>
+<p>如果一个实数的 Borel 集同时是实数集的子环，那么该集合要么是一个零维的集合（其 Hausdorff 维数为 0），要么就是整个实数集本身。我们将首先介绍若干代数与分析在交汇处的现象，并介绍几何测度论中的 Marstrand 投影定理。最后，作为该定理的应用，我们将对潜在的 Borel 环进行分类。</p>
+<figure><a href="../../assets/salon/166eb8e5730280dc9bbcdb7c1f0cfd3c-ba4947c8-5aed-4fc8-ac66-f1ffd98762d2.jpeg"><img src="../../assets/salon/166eb8e5730280dc9bbcdb7c1f0cfd3c-ba4947c8-5aed-4fc8-ac66-f1ffd98762d2.jpeg" alt="Photograph or presentation material from this salon talk" loading="lazy"></a><figcaption>From the original salon record · <a href="../../assets/salon/166eb8e5730280dc9bbcdb7c1f0cfd3c-ba4947c8-5aed-4fc8-ac66-f1ffd98762d2.jpeg">Open original image</a></figcaption></figure>
+
+
+
+
+
+
+<p>Jinghua Xi Nov. 17, 2024</p>
+<h3>Introduction</h3>
+<p><b>Definition: </b>A set $E\sub \R$ is said to be a Borel ring if $E&lt;br /&gt;$ is a Borel set of $\R$ and $E$ is a subring of $\R$.</p>
+<p>
+<b>Main Theorem: </b>If $E$ is a Borel ring with $\dim_HE&gt;0$, then $E=\R$. 
+</p>
+
+<p>In other word, there is no Borel ring with dimension strictly between $0$ and $1$.</p>
+<h3>Some phenomenons to keep in mind</h3>
+<ol>
+<li><p>If $G$ is a subgroup of $\R$ under addition and $G$ has interior, then $G=\R$.</p>
+<p>
+<i>The proof is motivated by the idea that the interior of </i> G <i> will “grow” to cover the entire real line.</i>
+</p>
+
+<p>
+Since $G$ has non-empty interior, it contains an <b>open interval</b> $I$. Because $G$ is closed under subtraction, the difference set $I-I$ is a subset of $G$: $I - I = \{ x - y \mid x, y \in I \} \subset G.$ The set $I-I$ is an open interval containing $0$, so $G$ contains an <b>open interval centered at the origin</b>, say $(-\epsilon, \epsilon)$. 
+</p>
+
+<p>
+Since $G$ is closed under addition and subtraction, it contains all integer multiples of $(-\epsilon, \epsilon) $. As $n$ ranges over all integers, the union of these intervals expands indefinitely:$\bigcup_{n \in \mathbb{Z}} (-n\epsilon, n\epsilon) = \mathbb{R}.$ Therefore, $ G = \mathbb{R} $.
+</p>
+
+
+
+
+</li>
+<li><p>If $f:\R\to \R$ is additive, i.e., $f(x+y)=f(x)+f(y)$, then it necessarily follows that $f(q)=q\cdot f(1)$ for all $q\in \mathbb Q$. This naturally leads to the question: <b>Under what conditions is </b><b>$f$</b><b> linear,</b> i.e., $f(x)=x\cdot f(1)$ for all $x\in \R$. A trivial condition we can enforce is <b>continuity</b>. However, a weaker condition—<b>measurability</b>—will also suffice. In other words, if  f  is both additive and measurable, then $f$ is linear.</p>
+<p>
+The idea is straightforward: <b>measurability is closely related to continuity</b>. It suffices to prove continuity at the origin, as global continuity then follows from additivity.
+</p>
+
+<p>
+Since $f$ is measurable on $[0, 1]$, <b>Lusin’s Theorem</b> guarantees the existence of a closed set $K\subset [0, 1]$ where $f|_K$ is continuous and $m(K) &gt; \frac{2}{3}$. Indeed, $K$ is compact, so $f|_K  $ is uniformly continuous. In other words, for any $ \epsilon &gt; 0 $, there exists $ \delta \in(0, \frac{1}{3})$ such that for all $ x, y \in K$ with $ |x - y| &lt; \delta $, we have $|f(x) - f(y)| &lt; \epsilon$.
+</p>
+
+<p>
+For any $|h| &lt; \delta$, I claim there exist $ x, y \in K $with $|x - y| = h$. Assuming the claim holds, <b>additivity</b> implies $|f(h)| = |f(x) - f(y)| &lt; \epsilon$ due to the uniform continuity of $f$ on  $K$. This establishes the proposition.
+</p>
+
+<p>
+<b>Proof of the Claim:</b>
+</p>
+
+<p>
+Suppose, for contradiction, that there exists $h$ with $ |h| &lt; \delta &lt; \frac{1}{3} $ such that there are no$  x, y \in K  $ with $ |x - y| = h $. In other words, $(h + K) \cap K = \emptyset$. This implies $m\left( (h + K) \cup K \right) = m(h + K) + m(K) = 2m(K) &gt; \frac{4}{3}$. However, since $ h &lt; \frac{2}{3} $, we also have $m\left( (h + K) \cup K \right) \leq m(h+[0,1]\cup [0,1] ) &lt; 1/3+1=\frac{4}{3}$, which is a contradiction.
+</p></li>
+</ol>
+<h3>The last piece of the puzzle</h3>
+<p>
+<b>Marstrand’s Projection Theorem: </b>Let $A$ be a Borel set in $\R^n$ with $\dim _HA &gt;2$. Then for $\sigma^{n-1}$-a.e. $e\in S^{n-1}$, it follows that $P_e(A)$ has interior, where $P_e(x)=x\cdot e$. 
+</p>
+
+
+
+
+
+<p>The theorem states that if we have a <b>Borel set</b>  $A \subset \mathbb{R}^k$  with a sufficiently large Hausdorff dimension (specifically,  $\dim_H A &gt; 2$ ), then there exists a <b>linear functional</b>  $\varphi: \mathbb{R}^k \to \mathbb{R}$  such that the image $\varphi(A)$ has interior. Furthermore, if $A$ possesses a <b>group structure</b>, the image $\varphi(A)$ inherits this structure when considering $ \varphi $as a <b>group homomorphism</b>. According to <b>Phenomenon 1</b>, this implies that  $\varphi(A) = \mathbb{R}$ .</p>
+<p>The primary challenge, however, lies in finding a Borel set $A$ that simultaneously has a large Hausdorff dimension and a group structure.</p>
+<p>
+A <b>Borel ring</b> with positive Hausdorff dimension serves as an excellent candidate for our purposes. However, a slight modification is necessary to address the dimension-related challenges. Specifically, the positive dimension allows us to employ the <b>Cartesian product</b> to effectively accumulate dimensions. This is evident from the observation that 
+</p>
+
+<p>$$
+\dim_H (A \times B) \geq \dim_H A \cdot \dim_H B.
+$$</p>
+<p>
+We can choose large $k$ such that $\dim_HE^k\ge k\dim_HE&gt;2$. Then we obtain the following: 
+</p>
+
+<p><b>Corollary: </b>Let $E$ be a Borel ring with $\dim_HE&gt;0$. There exists $k\in \N$ and linear functional $\varphi:\R^k\to \R$ such that $\varphi(E^k)=\R$.</p>
+<p>We arrive at our first tool for analyzing $ E^k $: a <b>linear functional</b> $\varphi$ whose restriction to $ E^k $ is <b>surjective</b>. A natural question arises: <b>When is </b><b>$ \varphi$</b><b> also injective?</b> Suppose there exists a specific $ k $ such that the map $\varphi: E^k \to \mathbb{R}$ is <b>bijective</b>. In this case, we obtain a <b>dangerous bijection</b>, bringing the desired result within reach.</p>
+<p><b>Claim: </b>If we choose the minimal $ $$k$ such that the corollary holds, then the associated linear functional  $\varphi$ is <b>injective</b> on $E^k$. In other words, if a linear functional $\varphi$ is <b>not injective</b> on $E^k$, then $k$ is <b>not</b> minimal.</p>
+<p><b>Proof of the Claim: </b>Suppose $\varphi$ is not injective on $E^k$. Then there exists a non-zero vector $(a_1,\dots,a_k)\in E^k$ such that $\varphi (a_1,\dots,a_k)=0$ since $\varphi $ is linear. This can be expressed as: $a_1\varphi(e_1)+\dots+a_k\varphi(e_k)=0$ where $e_1,\dots ,e_k$ are the standard basis in $\R^k$. Without loss of generality, assume $a_k\ne 0$.</p>
+<p>Since $\varphi (E^k)=\R$, we have:</p>
+<p>$\left\{ b_1 \varphi(e_1) + \dots + b_k \varphi(e_k) : b_i \in E \right\} = \mathbb{R}$.</p>
+<p>Multiplying each term by $a_k$, we obtain:</p>
+<p>$\left\{ a_k b_1 \varphi(e_1) + \dots + a_k b_k \varphi(e_k) : b_i \in E \right\} = a_k \mathbb{R}$.</p>
+<p>From the earlier equation $a_k \varphi(e_k) = - (a_1 \varphi(e_1) + \dots + a_{k-1} \varphi(e_{k-1}))$, substitute into the expression:</p>
+<p>$a_k b_1 \varphi(e_1) + \dots + a_k b_k \varphi(e_k) \\= a_k b_1 \varphi(e_1) + \dots + a_{k-1} b_{k-1} \varphi(e_{k-1}) - b_k (a_1 \varphi(e_1) + \dots + a_{k-1} \varphi(e_{k-1}))$.</p>
+<p>Simplifying, we get:</p>
+<p>$c_1 \varphi(e_1) + \dots + c_{k-1} \varphi(e_{k-1})$for some $c_i \in E$ since $E$ is a ring. Therefore:</p>
+<p>$\left\{ c_1 \varphi(e_1) + \dots + c_{k-1} \varphi(e_{k-1}) : c_i \in E \right\} = a_k \mathbb{R} = \mathbb{R}$.</p>
+<p>This implies that the map from $E^{k-1}  \text{ to }  \mathbb{R} $ defined by $\varphi$ is <b>surjective</b>. Therefore, such $k$ is not minimal.</p>
+<p><b>Finally, once we have established the bijection, we can show that </b> $E = \mathbb{R}$ <b>.</b></p>
+<p>The map  $\varphi: E^k \to \mathbb{R}$  is an additive, continuous bijection. Although its inverse  $\psi $ may not be continuous, considering  $\varphi$  as a <b>Borel measurable bijection</b> between standard Borel spaces ensures that $ \psi$ is also Borel measurable. Consequently, we obtain an <b>additive, measurable map</b> from $\mathbb{R} $ to $E^k$.</p>
+<p>This observation suggests precomposing $\psi$ with the natural inclusion into $\mathbb{R}$ and applying <b>Phenomenon 2</b>.</p>
+<p>The composition</p>
+<p>$$
+\mathbb{R} \xrightarrow{\ \psi\ } E^k \xrightarrow{\ \text{projection}\ } E \hookrightarrow \mathbb{R}
+$$</p>
+<p>is <b>linear</b> and, in particular, <b>surjective</b>. This forces the last inclusion to be a bijection, leading to the conclusion that $ E = \mathbb{R}$.</p>
+</article><aside class="archive-note"><a href="https://tough-erica-258.notion.site/166eb8e5730280dc9bbcdb7c1f0cfd3c">Original Notion record ↗</a> · <a href="../">Return to the archive</a></aside><footer>© Jinghua Xi · Based on <a href="https://github.com/yaoyao-liu/minimal-light">Minimal Light</a><br>Mathematics, computation, and conversations.</footer></main></div></body></html>
