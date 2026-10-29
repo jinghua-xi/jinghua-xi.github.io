@@ -60,3 +60,15 @@ main>section{border:0}header.talk-heading{position:static;float:none;width:auto;
     margin-bottom: 20px;
   }
 }
+
+/* Keep the theme switch available while scrolling, on every screen size. */
+@media screen {
+  .theme-toggle {
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    right: max(20px, env(safe-area-inset-right));
+    z-index: 100;
+    background: var(--bg);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  }
+}
