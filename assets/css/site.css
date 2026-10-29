@@ -8,3 +8,55 @@ main>section{border:0}header.talk-heading{position:static;float:none;width:auto;
 @media(max-width:440px){.wrapper{padding:30px 20px}.theme-toggle{right:20px;top:33px}.entry-head{display:block}.entry time{display:block;margin-top:2px}.archive-gallery{grid-template-columns:1fr}.archive-gallery a:nth-child(2){display:none}.archive-gallery img{height:190px}.archive-tools{align-items:flex-start;flex-direction:column;gap:5px}.archive-teaser{padding:18px}.talk-heading h1{font-size:26px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{html,body{background:#fff!important;color:#222!important;font-size:10pt}.wrapper{display:block;width:100%;padding:0}.profile,.theme-toggle,.skip-link,footer,.cv-actions,.back{display:none}.cv-page h1{font-size:25pt}.cv-page h2{font-size:14pt;margin-top:17px;border-bottom:1px solid #ddd;padding-bottom:4px}h1,h2,h3,a{color:#222!important}.entry{break-inside:avoid}.entry-head{display:flex}.entry p,.entry li{font-size:9pt}.cv-page p,.cv-page li{font-size:9pt}@page{size:A4;margin:15mm}}
+/* Larger profile photos */
+.profile-avatar {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 26px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.profile-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Frame the daytime photo around the head and shoulders */
+.profile-avatar .avatar-light {
+  object-position: center 35%;
+  transform: scale(1.9);
+  transform-origin: 36% 38%;
+}
+
+.profile-avatar .avatar-dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .avatar-light {
+  display: none;
+}
+
+:root[data-theme="dark"] .avatar-dark {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .avatar-light {
+    display: none;
+  }
+
+  :root:not([data-theme="light"]) .avatar-dark {
+    display: block;
+  }
+}
+
+@media (max-width: 800px) {
+  .profile-avatar {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 20px;
+  }
+}
