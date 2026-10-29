@@ -18,3 +18,44 @@
     initials.replaceWith(avatar);
   });
 })();
+
+// Desktop reading scale; independent of the browser's own zoom setting.
+(() => {
+  const root = document.documentElement;
+  const choices = ['0.8', '0.9', '1', '1.1'];
+  let saved;
+  try { saved = localStorage.getItem('jinghua-page-scale'); } catch {}
+  const initial = choices.includes(saved) ? saved : '0.9';
+  root.style.setProperty('--page-scale', initial);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeButton = document.querySelector('.theme-toggle');
+    if (!themeButton) return;
+    const controls = document.createElement('div');
+    controls.className = 'display-controls';
+    controls.setAttribute('role', 'group');
+    controls.setAttribute('aria-label', 'Display settings');
+    const label = document.createElement('label');
+    label.className = 'page-scale-control';
+    const text = document.createElement('span');
+    text.className = 'sr-only';
+    text.textContent = 'Page display scale';
+    const select = document.createElement('select');
+    select.id = 'page-scale';
+    for (const value of choices) {
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = `${Math.round(Number(value) * 100)}%`;
+      select.append(option);
+    }
+    select.value = initial;
+    select.addEventListener('change', () => {
+      root.style.setProperty('--page-scale', select.value);
+      try { localStorage.setItem('jinghua-page-scale', select.value); } catch {}
+    });
+    label.append(text, select);
+    controls.append(label, themeButton);
+    document.body.append(controls);
+    if (!CSS.supports('zoom', '0.9')) label.hidden = true;
+  });
+})();

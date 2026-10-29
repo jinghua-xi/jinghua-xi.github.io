@@ -98,3 +98,42 @@ main > section, main > .workshop-talk { float: none; width: auto; padding: 0; bo
 
 /* Allow profile links to wrap on small screens. */
 .profile-links { flex-wrap: wrap; row-gap: 8px; }
+
+
+/* Unscaled display controls remain fixed to the viewport. */
+.display-controls {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.display-controls .theme-toggle { position: static; }
+.page-scale-control select {
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 6px 8px;
+  min-height: 32px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+}
+.page-scale-control select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+@media screen and (min-width: 801px) {
+  .wrapper { zoom: var(--page-scale, 0.9); }
+}
+@media screen and (max-width: 800px) {
+  .page-scale-control { display: none; }
+}
+@media print {
+  .display-controls { display: none; }
+}
