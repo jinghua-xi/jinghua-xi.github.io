@@ -72,3 +72,18 @@ main>section{border:0}header.talk-heading{position:static;float:none;width:auto;
     box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
   }
 }
+
+
+/* Mathematical outreach photographs and workshop story. */
+.outreach-photo { margin: 23px 0; }
+.outreach-photo a { display: block; }
+.outreach-photo img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.outreach-photo figcaption { margin-top: 8px; font-size: 11px; line-height: 1.7; color: var(--muted); }
+#workshop > p { font-size: 14px; }
+.workshop-talk { margin: 35px 0; }
+.workshop-talk h3 { color: var(--fg); line-height: 1.7; }
+.recording-link { display: inline-block; padding: 10px 15px; border: 1px solid var(--line); border-radius: 5px; background: var(--soft); font-size: 13px; }
+.workshop-gallery { display: grid; grid-template-columns: 1fr 1.4fr; align-items: start; gap: 18px; }
+.workshop-gallery .outreach-photo { margin-top: 0; }
+@media (max-width: 600px) { .workshop-gallery { grid-template-columns: 1fr; } }
+main > section, main > .workshop-talk { float: none; width: auto; padding: 0; border: 0; }
