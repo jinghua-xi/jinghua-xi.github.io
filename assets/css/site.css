@@ -87,3 +87,14 @@ main>section{border:0}header.talk-heading{position:static;float:none;width:auto;
 .workshop-gallery .outreach-photo { margin-top: 0; }
 @media (max-width: 600px) { .workshop-gallery { grid-template-columns: 1fr; } }
 main > section, main > .workshop-talk { float: none; width: auto; padding: 0; border: 0; }
+
+
+/* Salon and workshop share one outreach collection. */
+.outreach-entry + .outreach-entry { margin-top: 24px; }
+.outreach-entry h2 { font-size: 23px; line-height: 1.45; }
+.outreach-entry h3 { font-size: 19px; line-height: 1.45; }
+.outreach-entry .text-links { margin-top: 15px; }
+.outreach-overview-link { font-size: 12px; margin: 20px 0 0; }
+
+/* Allow profile links to wrap on small screens. */
+.profile-links { flex-wrap: wrap; row-gap: 8px; }
