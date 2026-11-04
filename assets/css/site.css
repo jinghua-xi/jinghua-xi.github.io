@@ -150,42 +150,28 @@ main > section, main > .workshop-talk { float: none; width: auto; padding: 0; bo
   color: var(--muted);
   font-size: 12px;
 }
-.inference-diagram ol {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.inference-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  margin-inline: auto;
 }
-.inference-diagram li {
-  position: relative;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: var(--soft);
-  font-size: 12px;
-  line-height: 1.45;
+.inference-connections,
+.inference-icons {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
-.inference-diagram li + li::before {
-  content: "";
-  position: absolute;
-  top: calc(50% - 4px);
-  left: -16px;
-  width: 7px;
-  height: 7px;
-  border-top: 1px solid var(--gold);
-  border-right: 1px solid var(--gold);
-  transform: rotate(45deg);
+.inference-icons circle { fill: var(--bg); }
+.inference-labels {
+  fill: var(--fg);
+  font-size: 16px;
+  font-weight: 600;
 }
-.inference-diagram strong,
-.inference-diagram span { display: block; }
-.inference-diagram span { color: var(--muted); }
-@media (max-width: 560px) {
-  .inference-diagram ol { grid-template-columns: 1fr; gap: 18px; }
-  .inference-diagram li + li::before {
-    top: -15px;
-    left: calc(50% - 4px);
-    transform: rotate(135deg);
-  }
+.inference-interfaces {
+  fill: var(--muted);
+  font-size: 15px;
 }
