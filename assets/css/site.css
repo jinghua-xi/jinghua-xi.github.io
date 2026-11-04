@@ -173,5 +173,8 @@ main > section, main > .workshop-talk { float: none; width: auto; padding: 0; bo
 }
 .inference-interfaces {
   fill: var(--muted);
-  font-size: 15px;
+  font-size: 11.5px;
+}
+@media (max-width: 560px) {
+  .inference-interfaces { font-size: 13px; }
 }
