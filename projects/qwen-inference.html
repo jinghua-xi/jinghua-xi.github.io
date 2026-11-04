@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Qwen3-8B Inference on a Cloud GPU | Jinghua Xi</title>
+  <link rel="canonical" href="https://jinghua-xi.github.io/projects/qwen-inference.html">
+  <meta name="description" content="Deploying and testing Qwen3-8B with llama.cpp, CUDA and an NVIDIA L4 in Google Colab.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <link rel="stylesheet" href="../assets/css/minimal-light.css">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrapper">
+    <header class="profile">
+      <div class="monogram" aria-hidden="true">JX</div>
+      <h1><a href="../index.html">Jinghua Xi</a></h1>
+      <p class="position">M.Sc. student in Mathematics<br>University of Bonn</p>
+      <p class="location">Bonn, Germany</p>
+      <div class="profile-links"><a href="../cv/index.html">CV</a></div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a href="../index.html">About</a>
+        <a href="../index.html#research">Research</a>
+        <a href="../index.html#education">Education</a>
+        <a class="active" href="../index.html#projects">Projects</a>
+      </nav>
+    </header>
+    <main id="main">
+      <a class="back" href="../index.html#qwen-inference">← Technical Projects</a>
+      <header class="page-heading">
+        <div class="eyebrow">Personal project · November 2026</div>
+        <h1>Qwen3-8B Inference on a Cloud GPU</h1>
+        <p class="archive-intro">I deployed an open-weight language model in Google Colab and verified that a Python client could send a chat request and receive a generated reply over HTTP.</p>
+      </header>
+
+
+      <section aria-labelledby="components">
+        <div class="section-title"><h2 id="components">How inference works</h2></div>
+        <figure class="outreach-photo" style="max-width: 620px; margin-inline: auto">
+          <img src="../assets/img/qwen-inference-triangle.png" width="1536" height="1024" alt="Triangular diagram. The user communicates with the inference engine via the llama-server HTTP API. The engine tokenizes text and runs Qwen3-8B on the NVIDIA L4 via CUDA.">
+          <figcaption>The Python client and inference service run inside the same Google Colab virtual machine.</figcaption>
+        </figure>
+        <p>The user sends a prompt through the HTTP API provided by <code>llama-server</code>. Inside the inference engine, <code>llama.cpp</code> uses Qwen’s tokenizer to convert text into token IDs and runs the model using its architecture and learned weights. The engine uses the CUDA API to dispatch numerical operations to the NVIDIA L4. It decodes the generated tokens into text, which the HTTP API returns to the user.</p>
+      </section>
+
+      <section class="talk-content" aria-labelledby="setup">
+        <div class="section-title"><h2 id="setup">1. Set up and start the service</h2></div>
+        <p>Run the setup cells in order in a Colab GPU runtime. Each cell uses variables defined in the preceding cells.</p>
+        <h3>Check GPU memory and disk space</h3>
+        <p><code>nvidia-smi</code> reports the GPU and available VRAM. The Colab runtime used an NVIDIA L4, rated for 24 GB of GPU memory. The separate disk check confirms there is room for the engine and the 5.03 GB model file. <a href="https://www.nvidia.com/en-us/data-center/l4/">L4 specifications</a> · <a href="https://huggingface.co/Qwen/Qwen3-8B-GGUF/blob/main/Qwen3-8B-Q4_K_M.gguf">Qwen model file</a></p>
+        <details><summary>Show the GPU and disk check</summary><pre><code>import platform
+import shutil
+import subprocess
+from pathlib import Path
+
+if not Path(&quot;/content&quot;).is_dir() or platform.machine() != &quot;x86_64&quot;:
+    raise RuntimeError(&quot;Run this in a hosted Colab GPU runtime on Linux x86_64.&quot;)
+
+work = Path(&quot;/content/qwen-colab&quot;)
+work.mkdir(exist_ok=True)
+
+nvidia_smi = shutil.which(&quot;nvidia-smi&quot;)
+if nvidia_smi is None:
+    raise RuntimeError(
+        &quot;nvidia-smi is unavailable. In Colab, choose &quot;
+        &quot;Runtime > Change runtime type > Hardware accelerator > GPU. &quot;
+        &quot;Save, connect, and rerun this cell.&quot;
+    )
+
+gpu_query = [
+    nvidia_smi,
+    &quot;--query-gpu=name,driver_version,memory.total,memory.used,memory.free&quot;,
+    &quot;--format=csv&quot;,
+]
+subprocess.run(gpu_query, check=True)
+print(f&quot;Free disk space: {shutil.disk_usage(work).free / 2**30:.1f} GiB&quot;)</code></pre></details>
+        <h3>Install llama.cpp and confirm CUDA</h3>
+        <p>The CUDA build includes <code>llama-server</code> and the engine’s tokenizer implementation. The notebook downloads the prebuilt binary and its CUDA libraries, verifies the archives and checks that the engine sees <code>CUDA0</code>.</p>
+        <details><summary>Show the installation and CUDA check</summary><pre><code>import hashlib
+import os
+
+def download_verified(url, destination, expected_sha):
+    if destination.exists():
+        with destination.open(&quot;rb&quot;) as file:
+            if hashlib.file_digest(file, &quot;sha256&quot;).hexdigest() == expected_sha:
+                print(&quot;Reusing verified file:&quot;, destination.name, flush=True)
+                return
+
+    partial = destination.with_suffix(destination.suffix + &quot;.part&quot;)
+    subprocess.run([
+        &quot;curl&quot;, &quot;--fail&quot;, &quot;--location&quot;, &quot;--retry&quot;, &quot;3&quot;,
+        &quot;--progress-bar&quot;, &quot;--output&quot;, str(partial), url,
+    ], check=True)
+    with partial.open(&quot;rb&quot;) as file:
+        actual_sha = hashlib.file_digest(file, &quot;sha256&quot;).hexdigest()
+    if actual_sha != expected_sha:
+        partial.unlink()
+        raise RuntimeError(f&quot;Checksum verification failed: {destination.name}&quot;)
+    partial.replace(destination)
+
+release = &quot;https://github.com/ggml-org/llama.cpp/releases/download/b12090&quot;
+packages = {
+    &quot;llama-b12090-bin-ubuntu-cuda-12.8-x64.tar.gz&quot;:
+        &quot;6027ff15d9c359ad300f67ca374c7c3a8f3c54e928b147c9e13ab7ec5cb4c14c&quot;,
+    &quot;cudart-llama-b12090-bin-ubuntu-cuda-12.8-x64.tar.gz&quot;:
+        &quot;c7034bfc50a65b8e249d0e267a06ba6d2e196d4573eff63ed76d2540096f4a89&quot;,
+}
+engine = work / &quot;engine&quot;
+engine.mkdir(exist_ok=True)
+for filename, sha256 in packages.items():
+    archive = work / filename
+    download_verified(f&quot;{release}/{filename}&quot;, archive, sha256)
+    subprocess.run([&quot;tar&quot;, &quot;-xzf&quot;, str(archive), &quot;-C&quot;, str(engine)], check=True)
+
+server_bin = next(engine.rglob(&quot;llama-server&quot;))
+library_dirs = sorted({str(path.parent) for path in engine.rglob(&quot;*.so*&quot;)})
+env = os.environ.copy()
+if env.get(&quot;LD_LIBRARY_PATH&quot;):
+    library_dirs.append(env[&quot;LD_LIBRARY_PATH&quot;])
+env[&quot;LD_LIBRARY_PATH&quot;] = os.pathsep.join(library_dirs)
+
+subprocess.run([str(server_bin), &quot;--version&quot;], env=env, check=True)
+devices = subprocess.run(
+    [str(server_bin), &quot;--list-devices&quot;], env=env, check=True,
+    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
+).stdout
+print(devices)
+if &quot;CUDA0&quot; not in devices:
+    raise RuntimeError(&quot;The inference engine did not detect CUDA0. Check the output above and your GPU runtime.&quot;)</code></pre></details>
+        <h3>Download the Qwen3-8B weights</h3>
+        <p>The 4-bit GGUF file contains the trained weights and model metadata, including information the engine needs for tokenization. The notebook verifies its SHA-256 checksum after download.</p>
+        <details><summary>Show the model download</summary><pre><code>model = work / &quot;Qwen3-8B-Q4_K_M.gguf&quot;
+download_verified(
+    f&quot;https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/main/{model.name}&quot;,
+    model,
+    &quot;d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785&quot;,
+)
+print(f&quot;{model.name}：{model.stat().st_size / 1e9:.2f} GB&quot;)</code></pre></details>
+        <h3>Start the HTTP service</h3>
+        <p><code>llama-server</code> loads the model and listens on <code>127.0.0.1:18080</code>. I chose that port after finding <code>8080</code> occupied. HTTP 200 from <code>/health</code> confirms that the service is ready. The startup log shows which model layers were placed on the GPU.</p>
+        <details><summary>Show the server launch and readiness check</summary><pre><code>import socket
+import time
+
+import requests
+
+host, port = &quot;127.0.0.1&quot;, 18080
+base_url = f&quot;http://{host}:{port}&quot;
+log_path = work / &quot;server.log&quot;
+model_alias = &quot;qwen3-8b&quot;
+
+def stop_server():
+    process = globals().get(&quot;server_process&quot;)
+    if process is None or process.poll() is not None:
+        return
+    process.terminate()
+    try:
+        process.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        process.kill()
+        process.wait()
+
+stop_server()
+with socket.socket() as probe:
+    if probe.connect_ex((host, port)) == 0:
+        raise RuntimeError(f&quot;Port {port} is already in use. Choose another port, such as 18081, and retry.&quot;)
+
+command = [
+    str(server_bin), &quot;-m&quot;, str(model), &quot;--alias&quot;, model_alias,
+    &quot;--host&quot;, host, &quot;--port&quot;, str(port),
+    &quot;-c&quot;, &quot;4096&quot;, &quot;-np&quot;, &quot;1&quot;, &quot;-ngl&quot;, &quot;99&quot;, &quot;--jinja&quot;,
+]
+with log_path.open(&quot;w&quot;) as log:
+    server_process = subprocess.Popen(
+        command, env=env, stdout=log, stderr=subprocess.STDOUT,
+    )
+
+try:
+    deadline = time.monotonic() + 180
+    while time.monotonic() &lt; deadline:
+        if server_process.poll() is not None:
+            raise RuntimeError(f&quot;The server exited with code {server_process.returncode}.&quot;)
+        try:
+            health = requests.get(f&quot;{base_url}/health&quot;, timeout=2)
+        except (requests.ConnectionError, requests.Timeout):
+            pass
+        else:
+            if health.status_code == 200 and health.json().get(&quot;status&quot;) == &quot;ok&quot;:
+                break
+        time.sleep(1)
+    else:
+        raise TimeoutError(&quot;The server did not become ready within 180 seconds.&quot;)
+except BaseException:
+    stop_server()
+    print(&quot;\n&quot;.join(log_path.read_text(errors=&quot;replace&quot;).splitlines()[-30:]))
+    raise
+
+print(&quot;HTTP&quot;, health.status_code, health.json())
+for line in log_path.read_text(errors=&quot;replace&quot;).splitlines():
+    if &quot;offloaded&quot; in line or &quot;CUDA0 model buffer&quot; in line:
+        print(line)
+subprocess.run(gpu_query, check=True)</code></pre></details>
+      </section>
+
+      <section class="talk-content" aria-labelledby="test">
+        <div class="section-title"><h2 id="test">2. Test and stop the service</h2></div>
+        <p>Send one JSON request to <code>POST /v1/chat/completions</code> with <code>stream: true</code>. The client checks the HTTP status, displays each text chunk as it arrives and waits for the <code>[DONE]</code> marker.</p>
+        <details><summary>Show the streaming request</summary><pre><code>chat_url = f&quot;{base_url}/v1/chat/completions&quot;
+payload = {
+    &quot;model&quot;: model_alias,
+    &quot;messages&quot;: [
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;How do I deploy Qwen3-8B on Google Colab? Give a short step-by-step guide.&quot;},
+    ],
+    &quot;chat_template_kwargs&quot;: {&quot;enable_thinking&quot;: False},
+    &quot;max_tokens&quot;: 512,
+    &quot;temperature&quot;: 0.3,
+}
+
+import json
+
+with requests.post(
+    chat_url, json={**payload, &quot;stream&quot;: True},
+    stream=True, timeout=(5, 90),
+) as response:
+    if not response.ok:
+        print(response.text)
+    response.raise_for_status()
+    received_text = False
+    completed = False
+    for line in response.iter_lines(chunk_size=1):
+        if not line.startswith(b&quot;data:&quot;):
+            continue
+        data = line[len(b&quot;data:&quot;):].strip()
+        if data == b&quot;[DONE]&quot;:
+            completed = True
+            break
+        event = json.loads(data)
+        if event.get(&quot;error&quot;):
+            raise RuntimeError(event[&quot;error&quot;])
+        choices = event.get(&quot;choices&quot;, [])
+        if choices:
+            text = choices[0][&quot;delta&quot;].get(&quot;content&quot;)
+            if text:
+                print(text, end=&quot;&quot;, flush=True)
+                received_text = True
+    print()
+    if not received_text or not completed:
+        raise RuntimeError(&quot;No response text or end-of-stream marker was received. Check server.log.&quot;)</code></pre></details>
+        <p>When finished, stop the server with one line.</p>
+        <pre><code>stop_server()</code></pre>
+      </section>
+
+      <footer>© Jinghua Xi · Based on <a href="https://github.com/yaoyao-liu/minimal-light">Minimal Light</a></footer>
+    </main>
+  </div>
+</body>
+</html>
