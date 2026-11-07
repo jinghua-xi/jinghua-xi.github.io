@@ -1,0 +1,62 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage[margin=1.3cm]{geometry}
+\usepackage{xcolor,tabularx,titlesec,enumitem,microtype,hyperref}
+\definecolor{linkgold}{RGB}{110,84,26}
+\hypersetup{colorlinks=true,urlcolor=linkgold,pdftitle={Jinghua Xi -- Curriculum Vitae},pdfauthor={Jinghua Xi}}
+\urlstyle{same}\pagestyle{empty}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0pt}\setlength{\tabcolsep}{0pt}\raggedright
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{7pt}{4pt}
+\setlist[itemize]{leftmargin=1.3em,label=\textbullet,topsep=2pt,itemsep=0pt,parsep=0pt,partopsep=0pt}
+\setlist[enumerate]{leftmargin=1.8em,label=\textbf{[\arabic*]},topsep=0pt,itemsep=0pt,parsep=0pt}
+\newcommand{\cventry}[4]{\par\addvspace{3pt}\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}\textbf{#1} & #2 \\ \textit{#3} & #4\end{tabularx}\par}
+\newcommand{\projectentry}[2]{\par\addvspace{3pt}\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1em}}r@{}}\textbf{#1} & #2\end{tabularx}\par}
+\begin{document}\fontsize{9.5}{11.2}\selectfont
+{\fontsize{28}{32}\selectfont\textbf{Jinghua Xi}}\par\vspace{5pt}
+Bonn, Germany \enspace\textbar\enspace \href{mailto:s79jxi@uni-bonn.de}{s79jxi@uni-bonn.de}\par
+\href{https://jinghua-xi.github.io/}{jinghua-xi.github.io}
+\section{Mathematical Background and Skills}
+\textbf{Core areas:} Partial differential equations, functional analysis, and probability theory.\par
+\textbf{Programming:} Python; project experience with JavaScript and HTML/CSS.\par
+\textbf{Tools used:} Git, SQLite, REST APIs and Ollama.
+\section{Education}
+\cventry{University of Bonn}{Oct 2025 -- Present}{M.Sc.\ in Mathematics}{Bonn, Germany}
+\begin{itemize}
+\item \textbf{Current overall GPA: 1.0} (German grading scale; 1.0 is the highest grade).
+\item \textbf{Analysis and PDE:} PDE and Functional Analysis (1.0); PDE and Modelling (1.0).
+\item \textbf{Probability:} Stochastic Processes (1.3); Optimal Transport Seminar (1.0).
+\end{itemize}
+\cventry{Southern University of Science and Technology}{Sep 2021 -- Jun 2025}{B.Sc.\ in Mathematics, Fields Honors Program}{Shenzhen, China}
+\section{Publications}
+\begin{enumerate}
+\item C. G. Moreira, J. Xi and Y. Zhang (2025): \textbf{Graphs of continuous but non-affine functions are never self-similar.} \textit{Proc. Amer. Math. Soc.} 153, 2501--2512. \href{https://doi.org/10.1090/proc/17099}{doi:10.1090/proc/17099}.\par\smallskip
+\textbf{Main result:} Proved that the graph of a continuous function on $[0,1]$ is self-similar if and only if it is a straight line.
+\end{enumerate}
+\section{Selected Projects}
+\projectentry{AI-Assisted B2B Ordering Prototype}{Nov 2026}
+\begin{itemize}
+\item Developed and deployed a Python/SQLite ordering prototype integrating self-hosted Qwen3-8B through Ollama on a cloud GPU.
+\item Built retrieval over a 100-SKU catalogue, procurement-text parsing, multi-item carts, role-based access and Excel/email workflows.
+\item Validated 52 regression tests and implemented one-command SSH deployment with backups and health checks. \href{https://jinghua-xi.github.io/projects/hualian-ordering.html}{Project}
+\end{itemize}
+\projectentry{LLM Deployment and GPU Inference}{Nov 2026}
+Deployed 4-bit quantized Qwen3-8B on an NVIDIA L4 GPU in Google Colab using llama.cpp and CUDA. Used Python to validate an OpenAI-compatible REST API for LLM inference. \href{https://jinghua-xi.github.io/projects/qwen-inference.html}{Project}
+\section{Honors and Awards}
+\cventry{Rixin Motto Scholarship}{Oct 2024}{Southern University of Science and Technology}{\href{https://newshub.sustech.edu.cn/html/202410/45754.html}{Details}}
+\begin{itemize}\item Awarded to 9 students for academic and overall excellence.\end{itemize}
+\section{Exchange and Summer Schools}
+\cventry{[Exchange] Enhanced Program for Graduate Study}{Feb 2024 -- Jun 2024}{Peking University, China}{\href{https://bicmr.pku.edu.cn/content/show/38-305.html}{Program}}
+\begin{itemize}\item Selected as one of 31 participants nationwide.\end{itemize}
+\cventry{[Summer School] Geometry}{Aug 2023}{Utrecht University, Netherlands}{\href{https://utrechtgeometrycentre.nl/summer-school/}{Program}}
+\cventry{[Summer School] Mathematics of Random Systems}{Aug 2024}{University of Oxford, United Kingdom}{\href{https://www.randomsystems-cdt.ac.uk/oxford-berlin-summer-school-mathematics-random-systems}{Program}}
+\cventry{[Summer School] Maximal Functions and Differentiation of Integrals in Euclidean Space}{Jun 2025}{Westlake University, China}{\href{https://its.westlake.edu.cn/info/1017/2920.htm}{Program}}
+\section{Leadership Experience}
+\cventry{Founder \& Organizer, Undergraduate Mathematics Salon}{Sep 2023 -- Jun 2025}{Southern University of Science and Technology}{\href{https://jinghua-xi.github.io/salon/}{Archive}}
+\begin{itemize}
+\item Founded a seminar series promoting clear mathematical exposition and discussion among undergraduates.
+\item Coordinated monthly events and encouraged students to present and discuss mathematical topics.
+\item Featured on the university's official WeChat account. \href{https://mp.weixin.qq.com/s/EpakX8Plu0SW1HP2v0rGkg}{Read more.}
+\end{itemize}
+\end{document}

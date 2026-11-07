@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>AI-Assisted B2B Ordering | Jinghua Xi</title>
+  <meta name="description" content="An applied ordering prototype integrating Qwen3-8B, a 100-SKU catalogue, Python, SQLite and validated multi-item order workflows.">
+  <meta property="og:title" content="AI-Assisted B2B Ordering | Jinghua Xi">
+  <meta property="og:description" content="From natural-language purchasing requests to validated drafts, carts and sales workflows.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://jinghua-xi.github.io/projects/hualian-ordering.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme.js"></script>
+  <link rel="stylesheet" href="../assets/css/minimal-light.css">
+  <link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrapper">
+    <header class="profile">
+      <div class="monogram" aria-hidden="true">JX</div>
+      <h1><a href="../index.html">Jinghua Xi</a></h1>
+      <p class="position">M.Sc. student in Mathematics<br>University of Bonn</p>
+      <p class="location">Bonn, Germany</p>
+      <div class="profile-links"><a href="../cv/index.html">CV</a></div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a href="../index.html">About</a>
+        <a href="../index.html#research">Research</a>
+        <a href="../index.html#education">Education</a>
+        <a class="active" href="../index.html#projects">Projects</a>
+        <a href="../outreach/">Mathematical outreach</a>
+      </nav>
+    </header>
+    <main id="main">
+      <a class="back" href="../index.html#hualian-ordering">← Technical Projects</a>
+      <div class="page-heading">
+        <div class="eyebrow">Applied prototype · November 2026</div>
+        <h1>AI-Assisted B2B Ordering</h1>
+        <p class="archive-intro">A working prototype for Hualian Garment Accessories' Fuzhou ordering workflow: turning purchasing requests into catalogue-backed recommendations, editable carts and orders for sales review.</p>
+      </div>
+      <section aria-labelledby="overview-title">
+        <div class="section-title"><h2 id="overview-title">What I built</h2></div>
+        <p>I developed and deployed a Python and SQLite web application integrating self-hosted Qwen3-8B through Ollama on a Compshare cloud GPU instance. Customers can describe what an accessory should do, paste procurement text, or choose products manually.</p>
+        <p>The application retrieves relevant entries from a 100-SKU catalogue across 10 categories. Product descriptions, materials, dimensions and selection notes give the model context for matching customer needs. Missing specifications remain subject to confirmation.</p>
+        <details><summary>View the trial interface</summary><figure class="outreach-photo"><img src="../assets/img/hualian-ordering-demo.jpg" width="1265" height="2005" loading="lazy" alt="Trial interface with catalogue-backed AI recommendations, an item form and a cart holding an unsent sample item."><figcaption>Browser validation using an unsent sample item.</figcaption></figure></details>
+      </section>
+      <section aria-labelledby="architecture-title">
+        <div class="section-title"><h2 id="architecture-title">Architecture</h2></div>
+        <pre class="project-flow">Browser: chat / procurement text / form
+  → Python HTTP API and catalogue retrieval
+  → Ollama / Qwen3-8B structured extraction
+  → Server-side product and field validation
+  → Item draft → cart → SQLite
+  → Excel export and SMTP notification queue</pre>
+        <p>The model receives a bounded set of relevant catalogue records. SKU membership, quantities, units, dates and access permissions are checked by the backend. The application does not depend on the model alone to validate an order.</p>
+      </section>
+      <section aria-labelledby="workflow-title">
+        <div class="section-title"><h2 id="workflow-title">Workflow design</h2></div>
+        <ul>
+          <li><strong>Buyer and guest entry:</strong> internally issued buyer accounts see their own orders and can reorder; guests submit inquiries with at least one contact method.</li>
+          <li><strong>Progressive completion:</strong> the assistant asks for missing information. A complete item moves to the cart when the customer starts another product inquiry; unfinished drafts are retained.</li>
+          <li><strong>Procurement-text parsing:</strong> rule-based parsing plus optional model assistance handles pasted text and Excel rows, shared or separate delivery dates, ambiguous products and unit mismatches.</li>
+          <li><strong>Sales operations:</strong> role-based dashboards support order review, four statuses, status undo, Excel export and configurable email notifications.</li>
+          <li><strong>Reliable submission:</strong> database transactions, request IDs and a retryable mail outbox protect order storage from duplicate requests and temporary delivery failures.</li>
+        </ul>
+      </section>
+      <section aria-labelledby="validation-title">
+        <div class="section-title"><h2 id="validation-title">Validation and deployment</h2></div>
+        <p>The current suite has <strong>52 automated regression tests</strong> covering catalogue retrieval, draft transitions, invalid types and quantities, date constraints, order ownership, role permissions, notifications and deployment transport. Tests use isolated databases and mocked mail delivery.</p>
+        <p>Browser checks verified that completed items retain their quantity, delivery date and notes when automatically added to the cart; incomplete drafts remain editable; repeated inquiries do not add the same completed draft again.</p>
+        <p>A single SSH deployment command validates source files, checks migrations on a database copy, backs up the existing application, restarts the service and performs health checks. Failed post-update checks trigger an attempted source rollback. Orders, private configuration and model weights remain separate from source updates.</p>
+      </section>
+      <section aria-labelledby="scope-title">
+        <div class="section-title"><h2 id="scope-title">Scope and current status</h2></div>
+        <p>This is a trial prototype. The catalogue includes public supplier listings and size/colour variants, with missing specifications and legacy entries explicitly flagged. Sales confirms live availability, final prices and actual delivery dates. The tests demonstrate the covered workflows, without establishing production-scale capacity or recommendation accuracy.</p>
+        <p>The source repository is private. This page presents the design, implementation scope and validation results.</p>
+        <p><strong>Stack:</strong> Python standard library, SQLite, JavaScript, HTML/CSS, Ollama, Qwen3-8B, SMTP and Git/SSH.</p>
+        <div class="text-links"><a href="../cv/#hualian-project">View CV entry →</a><a href="../index.html#projects">All technical projects →</a></div>
+      </section>
+      <footer>© Jinghua Xi · Based on <a href="https://github.com/yaoyao-liu/minimal-light">Minimal Light</a><br>Mathematics, computation, and conversations.</footer>
+    </main>
+  </div>
+</body>
+</html>

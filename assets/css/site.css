@@ -178,3 +178,6 @@ main > section, main > .workshop-talk { float: none; width: auto; padding: 0; bo
 @media (max-width: 560px) {
   .inference-interfaces { font-size: 13px; }
 }
+
+#projects .archive-teaser + .archive-teaser { margin-top: 20px; }
+.project-flow { white-space: pre-wrap; overflow-wrap: anywhere; padding: 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--soft); font-size: 12px; line-height: 1.8; }
